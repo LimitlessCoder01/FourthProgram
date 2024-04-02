@@ -1,0 +1,45 @@
+package org.ink;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TextContains {
+	
+	public static void main(String[] args) {
+		
+		WebDriver driver= new ChromeDriver();
+		
+		driver.get("https://www.facebook.com");
+		
+//		driver.findElement(By.xpath("//h2[@class='_8eso']"));
+		
+		WebElement text = driver.findElement(By.xpath("//h2[contains(text(),'Facebook')]"));
+		
+		//getText()
+		
+		String GivenText = text.getText();
+		System.out.println(GivenText);
+		
+		//getAttribute()
+		
+		WebElement username = driver.findElement(By.xpath("//input[@id='email']"));
+		
+		username.sendKeys("Limitless COder");
+		
+		String usernameCred = username.getAttribute("value");
+		
+		System.out.println(usernameCred);
+		
+		WebElement password = driver.findElement(By.xpath("//input[@id='pass']"));
+		
+		password.sendKeys("Limit@123");
+		
+		String passwordCred = password.getAttribute("value");
+		
+		System.out.println(passwordCred);
+		
+	}
+
+}
